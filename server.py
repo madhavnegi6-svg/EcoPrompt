@@ -10,6 +10,7 @@ import hmac
 import json
 import os
 import sys
+from mcp.server.transport_security import TransportSecuritySettings
 from pathlib import Path
 from typing import Any, Literal
 
@@ -266,4 +267,5 @@ if __name__ == "__main__":
             port=int(os.environ.get("PORT", "8000")),
             stateless_http=True,
             json_response=True,
+                        transport_security=TransportSecuritySettings(enable_dns_rebinding_protection=False),
         )
